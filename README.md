@@ -17,7 +17,7 @@ By default, port 8000 will be opened, so no change is needed if your app will us
 Finally, to allow serverSetup to be run, run `chmod +x serverSetup.sh`
 
 ## Installation and post-install
-To start the install, run `sudo ./serverSetup.sh`. It will then begin the install process. No user input is needed until the service account is set up, at which point it will prompt you for credentials for the new user. Once the script finishes, you should have an empty folder at the path you specified earlier, which has been set up with the proper permissions. To test the new install, move the provided `flaskHelloWorld.py` into the server directory, and run it with the command `gunicorn -w 1 -b 0.0.0.0 flaskHelloWorld:app`. You can then access the page by going to your server's IP at port 8000.
+To start the install, run `sudo ./serverSetup.sh`. No user input is needed until the service account is set up, at which point it will prompt you for credentials for the new user. Once the script finishes, you should have an empty folder at the path you specified earlier, which has been set up with the proper permissions. To test the new install, move the provided `flaskHelloWorld.py` into the server directory, and run it with the command `gunicorn -w 1 -b 0.0.0.0 flaskHelloWorld:app`. You can then access the page by going to your server's IP at port 8000.
 
 ## Other steps
 In order to run gunicorn as the service account, put `sudo -u sv_gunicorn` before the command. Gunicorn can be run with several options, a short list of which can be found at the bottom of this README. 
