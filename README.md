@@ -13,6 +13,7 @@ Next, go to the `FIREWALL PORT` section. This is where you can specify which por
 Conventional ports you may want to open are:
 - 8000: Default port gunicorn will run on.
 - 443: Default port for SSL connections (more on SSL later on, don't use if you don't need it)
+
 By default, port 8000 will be opened, so no change is needed if your app will use that. 
 Finally, to allow serverSetup to be run, run `chmod +x serverSetup.sh`
 
