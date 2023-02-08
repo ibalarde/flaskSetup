@@ -7,7 +7,7 @@
 ##### CONFIG #####
 
 ##### INSTALL PATH #####
-installPath=~/
+installPath=/opt/flaskapp
 
 ##### FIREWALL PORT #####
 serverPort=8000
@@ -37,3 +37,6 @@ sudo ufw allow $serverPort
 sudo ufw allow ssh
 sudo ufw reload
 sudo ufw enable 
+
+#move flaskHelloWorld.py into install directory
+mv flaskHelloWorld.py $installPath
