@@ -28,12 +28,12 @@ sudo apt-get install gunicorn -y
 #create service account (This will require user input to set the password)
 sudo adduser sv_gunicorn
 
-#create folder for the application in the specified path and give service account all perms for it
+#create folder for the application in the specified path and give service account all permissions for it
 mkdir $installPath
 sudo chmod -R a+rwx $installPath
-#sudo chmod a+rwx $installPath/..
 
-#opens the user-specified port on the firewall (This allows access to the server from external clients))
+
+#opens the user-specified port on the firewall (This allows access to the server from external clients)
 sudo ufw allow $serverPort
 sudo ufw allow ssh
 sudo ufw reload
