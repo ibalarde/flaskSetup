@@ -7,7 +7,7 @@
 ##### CONFIG #####
 
 ##### INSTALL PATH #####
-installPath=
+installPath=~/
 
 ##### FIREWALL PORT #####
 serverPort=8000
@@ -31,7 +31,6 @@ sudo adduser sv_gunicorn
 #create folder for the application in the specified path and give service account all permissions for it
 mkdir $installPath
 sudo chmod -R a+rwx $installPath
-
 
 #opens the user-specified port on the firewall (This allows access to the server from external clients)
 sudo ufw allow $serverPort
