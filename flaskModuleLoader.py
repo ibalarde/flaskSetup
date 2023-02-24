@@ -1,6 +1,7 @@
 #flaskModuleLoader
 
 from flask import Flask
+import flaskModule1
 
 app = Flask(__name__)
 
@@ -10,5 +11,5 @@ def home_page():
 
 @app.route("/module")
 def module1():
-    import flaskModule1
-    handleData('hello world')
+    print("imported flaskModule1")
+    return flaskModule1.handleData('hello world')
