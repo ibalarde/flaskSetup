@@ -5,6 +5,10 @@
 __Make sure that the following files are in this folder:__
 - `serverSetup.sh`
 - `flaskHelloWorld.py`
+- `flaskModuleLoader.py`
+- `flaskModule1.py`
+- `gunicorn.service`
+- `service.sh`
 
 ## Before install
 Before beginning the installation process, there are several configuration-related items that need to be set up. To begin, open the file `serverSetup.sh` and go to the `INSTALL PATH` section. You should notice an variable called `installPath`, which is the location that the script will prepare for your application. You may also notice that this variable is empty, so you will need to designate a location. Conventionally, you would want to set it to a subfolder in /opt, however, you can give it a path to somewhere more suitable. If you pass the script a directory that doesn't exist, it will try to create it.
@@ -19,6 +23,10 @@ Finally, to allow serverSetup to be run, run `chmod +x serverSetup.sh`
 
 ## Installation and post-install
 To start the install, run `sudo ./serverSetup.sh`. No user input is needed until the service account is set up, at which point it will prompt you for credentials for the new user. Once the script finishes, you should have an empty folder at the path you specified earlier, which has been set up with the proper permissions. To test the new install, move the provided `flaskHelloWorld.py` into the server directory, and run it with the command `gunicorn -w 1 -b 0.0.0.0 flaskHelloWorld:app`. You can then access the page by going to your server's IP at port 8000.
+
+## (OPTIONAL) Setting up gunicorn as a service
+If you want gunicorn to start on bootup, you can set it up as a service. This install package comes with a premade service file `gunicorn.service`, which will need to be edited before you can use it. Open the file, go to the line `ExecStart`, and change `[YOUR APP PATH HERE]` to the install path you chose earlier.
+After this, run `service.sh`, which will move the service file to the proper directory and enable it.
 
 ## Other steps
 In order to run gunicorn as the service account, put `sudo -u sv_gunicorn` before the command. Gunicorn can be run with several options, a short list of which can be found at the bottom of this README. 

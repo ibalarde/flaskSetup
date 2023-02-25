@@ -1,0 +1,10 @@
+[Unit]
+Description=Gunicorn WSGI server
+
+[Service]
+type=simple
+User=sv_gunicorn
+ExecStart=/usr/bin/env gunicorn -w 4 -b 0.0.0.0 [YOUR APP PATH HERE]
+
+[Install]
+WantedBy=multi-user.target

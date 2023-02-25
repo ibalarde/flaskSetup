@@ -36,8 +36,11 @@ sudo chmod -R a+rwx $installPath
 sudo ufw allow $serverPort
 sudo ufw allow ssh
 sudo ufw reload
-sudo ufw enable 
+sudo ufw enable
 
 #move flaskHelloWorld.py into install directory
 mv flaskHelloWorld.py $installPath
+mv flaskModuleLoader.py $installPath
+mv flaskModule1.py $installPath
 
+##### GUNICORN SERVICE #####
