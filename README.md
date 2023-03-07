@@ -11,7 +11,7 @@ __Make sure that the following files are in this folder:__
 - `service.sh`
 
 ## Before install
-Before beginning the installation process, there are several configuration-related items that need to be set up. To begin, open the file `serverSetup.sh` and go to the `INSTALL PATH` section. You should notice an variable called `installPath`, which is the location that the script will prepare for your application. You may also notice that this variable is empty, so you will need to designate a location. Conventionally, you would want to set it to a subfolder in /opt, however, you can give it a path to somewhere more suitable. If you pass the script a directory that doesn't exist, it will try to create it.
+Before beginning the installation process, there are several configuration-related items that need to be set up. To begin, open the file `serverSetup.sh` and go to the `INSTALL PATH` section. You should notice an variable called `installPath`, which is the location that the script will prepare for your application. By default, it will install the server in /opt/flaskapp/, which should be fine for must use cases. However, if you need to put it somewhere else, you can change the variable to whatever path you need. (If you pass the script a directory that doesn't exist, it will try to create it.)
 __NOTE: To install in /opt, serverSetup will need to be run with root privileges.__
 Next, go to the `FIREWALL PORT` section. This is where you can specify which port you want to run your application on.
 Conventional ports you may want to open are:
