@@ -24,7 +24,8 @@ Finally, to allow serverSetup to be run, run `chmod +x serverSetup.sh`
 To start the install, run `sudo ./serverSetup.sh`. No user input is needed until the service account is set up, at which point it will prompt you for credentials for the new user. Once the script finishes, you should have an empty folder at the path you specified earlier, which has been set up with the proper permissions. To test the new install, move the provided `flaskHelloWorld.py` into the server directory, and run it with the command `gunicorn -w 1 -b 0.0.0.0 flaskHelloWorld:app`. You can then access the page by going to your server's IP at port 8000.
 
 ## Running gunicorn on boot (with cron)
-Cron will automatically be set up with the rest of the server, but will need some final config tweaks to get it ready. Go to the application directory and open `gunicorn_service.sh`, then change the two placeholders to your directory and app name, respectively.
+If you want gunicorn to be a start-up service, you will want to set it up with `cron`. First, go to the application directory and open `gunicorn_service.sh`, then change the two placeholders to your directory and app name, respectively.
+Next, in order to have cron start the server on boot, open the file `/etc/crontab` as root and add the line `@reboot sv_gunicorn [install path]/gunicorn_cron.sh`.
 
 ## Gunicorn options
 - `-w`: Specifies the number of workers to start

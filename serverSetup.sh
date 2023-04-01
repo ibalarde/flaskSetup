@@ -7,7 +7,7 @@
 ##### CONFIG #####
 
 ##### INSTALL PATH #####
-installPath=/opt/flaskapp/
+installPath=/opt/flaskapp
 
 ##### FIREWALL PORT #####
 serverPort=8000
@@ -41,7 +41,3 @@ sudo ufw allow $serverPort
 sudo ufw allow ssh
 sudo ufw reload
 sudo ufw enable
-
-#create cron task
-echo "@reboot sv_gunicorn $installPath/gunicorn_cron.sh" >> /etc/crontabs
-sudo systemctl enable cron.service
