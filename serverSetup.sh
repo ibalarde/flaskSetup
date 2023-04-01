@@ -7,7 +7,7 @@
 ##### CONFIG #####
 
 ##### INSTALL PATH #####
-installPath=/opt/flaskapp
+installPath=/opt/flaskapp/
 
 ##### FIREWALL PORT #####
 serverPort=8000
@@ -28,8 +28,12 @@ sudo apt-get install gunicorn -y
 #create service account (This will require user input to set the password)
 sudo adduser sv_gunicorn
 
-#create folder for the application in the specified path and give service account all permissions for it
+#create app folder and move demos in
 mkdir $installPath
+mv flaskHelloWorld.py $installPath
+mv flaskModuleLoader.py $installPath
+mv flaskModule1.py $installPath
+mv gunicorn_cron.sh $installPath
 sudo chmod -R a+rwx $installPath
 
 #opens the user-specified port on the firewall (This allows access to the server from external clients)
@@ -38,9 +42,6 @@ sudo ufw allow ssh
 sudo ufw reload
 sudo ufw enable
 
-#move flaskHelloWorld.py into install directory
-mv flaskHelloWorld.py $installPath
-mv flaskModuleLoader.py $installPath
-mv flaskModule1.py $installPath
-
-##### GUNICORN SERVICE #####
+#create cron task
+echo "@reboot sv_gunicorn $installPath/gunicorn_cron.sh" >> /etc/crontabs
+sudo systemctl enable cron.service
